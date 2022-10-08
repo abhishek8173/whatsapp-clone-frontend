@@ -1,7 +1,7 @@
 .sidebar{
     display: flex;
     flex-direction: column;
-    flex: 0.3;
+    flex: 0.8;
     border-right: 1px solid #333D44;
 }
 
@@ -73,8 +73,15 @@
     height: 100%;
 }
 
-@media  screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
     .sidebar{
-        flex: 0.45;
+        flex: 0.25;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sidebar{
+        flex: 0;
+        display: none;
     }
 }

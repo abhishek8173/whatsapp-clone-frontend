@@ -1,27 +1,47 @@
 import React from 'react'
 import './Sidebar.css'
+import { useEffect } from 'react';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
-import ChatIcon from '@mui/icons-material/Chat';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 import { Avatar, IconButton } from '@mui/material';
 import SidebarChat from './SidebarChat';
+import { UserAuth } from './context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar() {
+    const { user, logOut } = UserAuth();
+    const navigate = useNavigate();
+
+    const handleSignOut = async () => {
+        try{
+            await logOut();
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        if(user?.email == null){
+            navigate('/SignIn');
+        }
+    }, [user])
+
   return (
     <div className='sidebar'>
         <div className='sidebar__header'>
-            <Avatar className='sidebar_headerAvatar' src='https://i.pinimg.com/736x/77/9e/5e/779e5e5ffbec6d9c0254001656c12f46.jpg' />
+            <Avatar className='sidebar_headerAvatar' src={user?.photoURL} />
             <div className='sidebar__headerRight'>
                 <IconButton className='donutIcon'>
                     <DonutLargeIcon />
                 </IconButton>
-                <IconButton className='chatIcon'>
-                    <ChatIcon />
+                <IconButton className='addChatIcon'>
+                    <AddOutlinedIcon />
                 </IconButton>
-                <IconButton className='moreIcon'>
-                    <MoreVertIcon />
+                <IconButton onClick = {handleSignOut} className='logOutIcon'>
+                    <LogoutIcon />
                 </IconButton>
             </div>
         </div>

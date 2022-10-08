@@ -1,7 +1,7 @@
 .chat{
     display: flex;
     flex-direction: column;
-    flex: 0.7;
+    flex: auto;
 }
 
 .chat__header{
@@ -28,7 +28,7 @@
 
 .chat__headerRight{
     display: flex;
-    width: 100px;
+    width: 150px;
     margin-left: auto;
     margin-right: 0;
     justify-content: space-between;
@@ -61,15 +61,24 @@
 .chat__message{
     position: relative;
     display: flex;
+    margin-left: auto;
     flex-direction: column;
     font-size: 14px;
     font-weight: 500;
     padding: 10px;
     width: fit-content;
+    min-height: 50px;
+    min-width: 110px;
+    max-width: 60%;
     border-radius: 10px;
-    background-color: #222C32;
+    background-color: #25594A;
     margin-bottom: 10px;
     color: #EAEDEF;
+}
+
+.chat__receive {
+    margin-left: 0;
+    background-color: #222C32;
 }
 
 .chat__name{
@@ -84,16 +93,20 @@
     display: flex;
 }
 
-.chat__recieve{
-    margin-left: auto;
-    background-color: #25594A;
+.chat__messageandtime > p{
+    margin-left: 0;
+    margin-right: 15px;
 }
 
 .chat__timestamp{
-    margin-left: 10px;
+    margin-right: 0px;
+    margin-left: auto;
+    min-width: fit-content;
     font-size: 12px;
     color: #A7ABAD;
-    margin-top: 10px;
+    margin-top: auto;
+    padding-top: 15px;
+    margin-bottom: 0px;
 }
 
 .chat__footer{
@@ -104,6 +117,7 @@
 }
 
 .chat__footerLeft{
+    display: flex;
     padding-left: 15px;
     padding-right: 10px;
 }
@@ -117,8 +131,19 @@
     color: #89969F;
 }
 
+.chat__sendIcon .MuiSvgIcon-root{
+    color: #5ECC9F;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .chat__attachButton .MuiSvgIcon-root{
     rotate: 60deg;
+}
+
+.chat__form{
+    display: flex;
+    flex: 1;
 }
 
 .chat__messageInput{
@@ -128,16 +153,12 @@
     padding-right: 15px;
     background: #2D3941;
     height: 40px;
-    width: 60%;
     border-radius: 10px;
     align-items: center;
 }
 
-.chat__messageInput > button{
-    display: none;
-}
-
 .chat__messageInput > input{
+    flex: 1;
     background: none;
     border: none;
     color: #89969F;
@@ -149,13 +170,12 @@
     outline: none;
 }
 
-.chat__footerRight{
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-@media screen and (max-width: 1024px) {
-    .chat{
-        flex:0.55;
+@media screen and (max-width: 450px) {
+    .chat__footerLeft{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .chat__footer{
+        width: 100vw;
     }
 }
