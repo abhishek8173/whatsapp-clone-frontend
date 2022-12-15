@@ -171,6 +171,10 @@
 }
 
 @media screen and (max-width: 450px) {
+    .chat__header{
+        height: 40px;
+    }
+    
     .chat__footerLeft{
         padding-left: 0;
         padding-right: 0;
